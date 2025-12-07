@@ -1,0 +1,77 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    border-bottom: 2px solid #007bff; /* Garis biru di bawah judul */
+    padding-bottom: 10px;
+}
+
+p {
+    color: #666;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+/* Styling untuk setiap blok pertanyaan */
+.question-block {
+    background-color: #e6f0ff; /* Latar belakang biru muda */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid #007bff; /* Garis biru di samping */
+    border-radius: 4px;
+    color: #333;
+    font-weight: 500;
+}
+
+.question-block p {
+    margin: 0;
+    color: #333;
+    font-style: normal;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+    min-height: 150px;
+    box-sizing: border-box;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff; /* Warna tombol biru */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
