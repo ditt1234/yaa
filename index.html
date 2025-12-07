@@ -11,11 +11,58 @@
     <h1>Kenapa kalau aku ajak call kamu ga mau?</h1>
     <p>Jawab jujur aja ya :</p>
 
-    <form action="save.php" method="POST">
-        <textarea name="jawaban" placeholder="Tulis jawaban di sini..." required></textarea>
-        <br><br>
-        <button type="submit">Kirim Jawaban</button>
-    </form>
+    <div> <textarea id="jawaban-input" placeholder="Tulis jawaban di sini..."></textarea>
+  <br>
+  <button type="button" onclick="simpanData()">Kirim Jawaban</button>
+</div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> 
+
+<script>
+  // 2. Objek Konfigurasi Anda (Sudah benar)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDFoNgQDhfzX0Yy_K1-sUOcrZCVHhPQxg0",
+    authDomain: "my-first-app-1f814.firebaseapp.com",
+    projectId: "my-first-app-1f814",
+    storageBucket: "my-first-app-1f814.firebasestorage.app",
+    messagingSenderId: "107957450162",
+    appId: "1:107957450162:web:63a9312544434b690d60ab",
+    measurementId: "G-D8ZKB9NWN0"
+  };
+
+  // 3. Inisialisasi Firebase dan Firestore
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(); 
+
+    // Lanjutkan dari Baris 37 di editor Anda:
+
+function simpanData() {
+  // Ambil nilai dari textarea (PASTIKAN IDNYA 'jawaban-input' SESUAI DI ATAS)
+  const jawabanUser = document.getElementById('jawaban-input').value;
+
+  if (jawabanUser.trim() === "") {
+    alert("Jawaban tidak boleh kosong.");
+    return;
+  }
+  
+  const dataUntukFirestore = {
+    jawaban_teks: jawabanUser,
+    waktu: firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  // Simpan data ke Collection 'jawaban_pengguna' di Firestore
+  db.collection("jawaban_pengguna").add(dataUntukFirestore)
+    .then(() => {
+      alert("✅ Jawaban Berhasil Dikirim ke Firebase!");
+      document.getElementById('jawaban-input').value = ''; // Bersihkan field
+    })
+    .catch((error) => {
+      alert("❌ Gagal mengirim. Cek konsol browser.");
+      console.error("Error saving document: ", error);
+    });
+}
+    </script>
 
 </body>
 </html>
+
